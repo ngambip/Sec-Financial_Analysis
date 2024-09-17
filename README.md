@@ -1,4 +1,8 @@
-# Financial Analysis Dashboard
+# SEC Financial Analysis Dashboard
+
+![SEC DASH BOARD](Images/SEC_Logo.png)
+
+
 
 ## Objective
 The goal of this project is to build a comprehensive dashboard that allows investors, financial analysts, and related stakeholders to analyze the financial performance and trends of publicly traded US companies. The dashboard integrates financial data from the SEC EDGAR database, offering features such as performance evaluation, comparative analysis, and predictive analytics.
