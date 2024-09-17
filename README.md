@@ -3,8 +3,6 @@
 ![SEC DASH BOARD](Images/SEC2_Logo.png)
 
 
-# SEC EDGAR Financial Dashboard Project
-
 ## Overview
 This project aims to create a dashboard that will help investors and financial analysts make informed investment decisions based on the quarterly reports of companies listed on the SEC EDGAR database. The dashboard will allow users to visualize, compare, and predict company performance, helping them identify which companies might be profitable to invest in.
 
