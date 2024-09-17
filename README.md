@@ -1,4 +1,4 @@
-# SEC Financial Analysis Dashboard
+# SEC EDGAR Financial Analysis Dashboard
 
 ![SEC DASH BOARD](Images/SEC_Logo.png)
 
