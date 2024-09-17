@@ -135,15 +135,7 @@ All code for:
 ---
 
 ## Deployment and Maintenance Instructions
-1. **Clone the repository**:
-    ```bash
-    git clone https://github.com/ngambip/SEC_EDGAR_Dashboard.git
-    ```
-2. **Set up your environment**:
-    - Install dependencies from `requirements.txt`.
-    - Set up API keys and SQL connections.
-3. **Run the Power BI dashboard** following setup steps in `setup.md`.
-4. **CI/CD**: The CI/CD pipeline is automated via GitHub Actions. Modify `.github/workflows/` for custom deployments.
+To add
 
 ---
 
