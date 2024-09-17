@@ -3,172 +3,162 @@
 ![SEC DASH BOARD](Images/SEC2_Logo.png)
 
 
+# SEC EDGAR Financial Dashboard Project
 
-## Objective
-The goal of this project is to build a comprehensive dashboard that allows investors, financial analysts, and related stakeholders to analyze the financial performance and trends of publicly traded US companies. The dashboard integrates financial data from the SEC EDGAR database, offering features such as performance evaluation, comparative analysis, and predictive analytics.
+## Overview
+This project aims to create a dashboard that will help investors and financial analysts make informed investment decisions based on the quarterly reports of companies listed on the SEC EDGAR database. The dashboard will allow users to visualize, compare, and predict company performance, helping them identify which companies might be profitable to invest in.
+
+---
 
 ## Table of Contents
-- [Challenges](#challenges)
-- [Solution](#solution)
-- [Target Audience](#target-audience)
-- [Use Cases](#use-cases)
-  - [1. Evaluate Company Performance](#1-evaluate-company-performance)
-  - [2. Compare Industry Peers](#2-compare-industry-peers)
-  - [3. Predict Future Performance](#3-predict-future-performance)
-- [Technical Requirements](#technical-requirements)
-  - [Data Integration and Storage](#data-integration-and-storage)
-  - [Agile Setup](#agile-setup)
-  - [CI/CD Pipeline](#cicd-pipeline)
-  - [Data Observability](#data-observability)
-  - [Dev and Live Environments](#dev-and-live-environments)
-  - [Data Visualization](#data-visualization)
-  - [Documentation](#documentation)
-- [Success Criteria](#success-criteria)
-- [Data Quality Checks](#data-quality-checks)
-- [Expected Information](#expected-information)
-- [Expected Data](#expected-data)
-- [License](#license)
+1. [Overview](#overview)
+2. [Objective](#objective)
+3. [Collaborative Workflow: Roles and Pipelines](#collaborative-workflow-roles-and-pipelines)
+    - [Data Engineers](#data-engineers)
+    - [Data Analysts](#data-analysts)
+    - [Data Scientists](#data-scientists)
+4. [Data Structure & Flow](#data-structure--flow)
+5. [Data Sources](#data-sources)
+6. [Dashboard Blueprint](#dashboard-blueprint)
+7. [System Architecture](#system-architecture)
+8. [Project Directory Structure](#project-directory-structure)
+9. [Transformation Logic](#transformation-logic)
+10. [Data Quality Checks](#data-quality-checks)
+11. [Exploratory Data Analysis (EDA) Findings](#exploratory-data-analysis-eda-findings)
+12. [CI/CD Configurations](#cicd-configurations)
+13. [Analysis Conclusions](#analysis-conclusions)
+14. [Source Code](#source-code)
+15. [Deployment and Maintenance Instructions](#deployment-and-maintenance-instructions)
+16. [Glossary](#glossary)
+17. [Success Criteria](#success-criteria)
 
-## Challenges
-- Difficulty accessing reliable and comprehensive financial data.
-- Complex and time-consuming process of analyzing financial reports.
-- Lack of easy tools for comparing companies across industries.
-- Frequent data updates and model enhancements disrupting user experience.
+---
 
-## Solution
-A user-friendly dashboard that:
-- Integrates financial data from the SEC EDGAR database.
-- Displays key metrics such as revenue, expenses, net income, and earnings per share over time.
-- Provides comparative analysis tools to benchmark companies against industry peers.
-- Includes predictive analytics to forecast future financial performance based on historical trends.
-- Automates testing and deployment through CI/CD pipelines.
-- Maintains separate environments using feature branches in GitHub for safe updates and releases.
+## Objective
+To provide an easy-to-use dashboard that helps users analyze financial data, identify trends, and predict company performance, using data from the SEC EDGAR platform.
 
-## Target Audience
-**Primary Users:**
-- Investors
-- Financial Analysts
+## Collaborative Workflow: Roles and Pipelines
 
-**Secondary Users:**
-- Market Analysts
-- Portfolio Managers
-- Corporate Finance Teams
+### 1. **Data Engineers**
+**Role**: Manage the ingestion, transformation, and storage of SEC EDGAR data.
+- Data Engineers will use APIs to pull data from SEC EDGAR and transform it using SQL and Python before storing it in databases. They will ensure data is clean and validated for further use by other teams.
 
-## Use Cases
+### 2. **Data Analysts**
+**Role**: Perform Exploratory Data Analysis (EDA) and create visualizations.
+- Analysts will access data through URLs into Power Query to clean and structure the data. They will perform analysis and create visualizations using Power BI, helping users compare companies across industries.
 
-### 1. Evaluate Company Performance
-**User Story:**  
-As an investor, I want to analyze the financial performance of individual US companies over past fiscal periods so that I can make informed investment decisions.
+### 3. **Data Scientists**
+**Role**: Develop predictive models to forecast company performance.
+- Data Scientists will access the data through APIs, run advanced machine learning models, and deploy predictions that can be integrated into the dashboard, offering insights into future trends.
 
-**Acceptance Criteria:**  
-The dashboard should provide a clear analysis and reporting suite that visualizes historical data for selected companies.
+---
 
-### 2. Compare Industry Peers
-**User Story:**  
-As a financial analyst, I want to compare companies within the same industry to benchmark performance.
+## Data Structure & Flow
+1. **Raw Data Layer**: SEC EDGAR data collected via APIs.
+2. **Clean Data Layer**: Transformed data ready for analysis.
+3. **Analytical Layer**: Data used for visualization and reporting by analysts.
+4. **Predictive Layer**: Data used by data scientists to generate models for forecasting.
 
-**Acceptance Criteria:**  
-The dashboard should include a competitor analysis report and tools to perform industry peer comparisons.
+---
 
-### 3. Predict Future Performance
-**User Story:**  
-As a market analyst, I want to predict future performance based on historical trends.
+## Data Sources
+- **SEC EDGAR Database**: The source for financial reports of public companies.
 
-**Acceptance Criteria:**  
-The dashboard should include predictive models with a user-friendly interface for forecasting financial performance.
+---
 
-## Technical Requirements
+## Dashboard Blueprint
+The dashboard will include:
+- **Company financial trends**: Revenue, net income, and EPS over time.
+- **Comparison tools**: Compare companies across sectors.
+- **Predictive analytics**: Use machine learning models to forecast performance.
 
-### Data Integration and Storage
-- Extract financial data from the SEC EDGAR database.
-- Use SQL and Python to transform and clean the data.
-- Store the cleaned data in a SQL database.
-- Run data quality checks (e.g., row counts, duplicates).
-- Create views to expose the correct data for visualization.
+---
 
-### Agile Setup
-- **Tasks:**
-  - Create GitHub Projects to manage user stories, sprints, features, tasks, and bugs, similar to an Azure DevOps structure.
-  - Maintain boards for visual tracking of project progress.
+## System Architecture
+- **Data ingestion**: APIs for engineers and data scientists, URLs for analysts via Power Query.
+- **Storage**: SQL databases to store clean data.
+- **Processing**: Data processed using Python and SQL.
+- **Visualization**: Power BI for real-time dashboard visualizations.
 
-### CI/CD Pipeline
-- **Tasks:**
-  - Set up GitHub Actions for automated testing and deployment.
-  - Create a build workflow to deploy successful builds to the DEV environment.
-  - Deploy from DEV to LIVE (main) environment after successful testing and approvals.
+---
 
-### Data Observability
-- Use data observability tools such as Monte Carlo or Datadog.
-- Assign data engineers to build and monitor observability pipelines.
-- Monitor for data drift, schema changes, and data quality issues.
+## Project Directory Structure
+|-- data/ |-- raw/ |-- processed/ |-- scripts/ |-- ingestion/ |-- transformation/ |-- models/ |-- reports/ |-- EDA/ |-- visualizations/ |-- README.md
 
-### Dev and Live Environments
-- **Tasks:**
-  - Create a DEV branch for development.
-  - Create a pre-LIVE branch for stable releases.
-  - Create a LIVE branch for production-ready code.
-  - Use feature branches to isolate individual developer changes, merging into DEV after code review and testing.
 
-### Data Visualization
-- Use Power BI to create the dashboard.
-- Develop intuitive user interfaces with filters and sorting options for different financial metrics.
-- Ensure that the dashboard is regularly updated with the latest data.
+---
 
-### Documentation
-All relevant documentation should be included in the README and other appropriate files:
-- Data sources
-- Dashboard blueprint/mock-ups
-- System architecture
-- Project directory structure
-- Transformation logic
-- Data quality checks
-- Exploratory Data Analysis (EDA) findings
-- CI/CD configurations
-- Analysis conclusions
-- Source code
-- Deployment and maintenance instructions
+## Transformation Logic
+The Extract, Transform, Load (ETL) process includes:
+- **Extraction**: Collecting data from SEC EDGAR via API and Power Query.
+- **Transformation**: Cleaning and reformatting data for consistency and reliability.
+- **Loading**: Storing clean data in SQL databases.
 
-## Success Criteria
-The dashboard should:
-- Provide accurate and up-to-date financial metrics for individual companies and industries.
-- Have a user-friendly interface for navigating, filtering, and sorting data.
-- Include tools for comparing multiple companies within the same industry.
-- Feature reliable predictive models with clear outputs and adjustable parameters.
-- Use CI/CD pipelines to automate testing and deployment.
-- Ensure continuous improvement with minimal disruptions to the user experience.
+---
 
 ## Data Quality Checks
-To ensure the quality of the data, the following checks will be implemented:
-- Row count checks
-- Column count checks
-- Data type checks
-- Duplicate checks
-- Consistency checks
-- Outlier detection
-- Formatting checks
-- Character length checks
-- Numeric range checks
+1. Verify the correct number of rows and columns.
+2. Ensure data types are consistent.
+3. Remove duplicates and handle missing values.
+4. Identify and manage outliers.
 
-## Expected Information
-The target users (investors, financial analysts, portfolio managers) can expect the following information from the dashboard:
-- **Key financial metrics**: Revenue, expenses, net income, earnings per share (EPS), return on equity (ROE), and debt-to-equity ratio.
-- **Trends and comparisons**: Insights into financial trends over time and comparison across industry peers.
-- **Predictive insights**: Forecasts of future financial performance using historical data and predictive models.
-- **Benchmarking tools**: Benchmark companies against industry standards and identify outliers.
+---
 
-## Expected Data
-The dashboard will pull data from SEC quarterly and annual reports, including:
-- Company name (string)
-- Fiscal year/quarter (date)
-- Total revenue (integer/float)
-- Total expenses (integer/float)
-- Net income (integer/float)
-- Earnings per share (EPS) (float)
-- Return on equity (ROE) (float)
-- Debt-to-equity ratio (float)
-- Operating cash flow (integer/float)
-- Industry sector (string)
+## Exploratory Data Analysis (EDA) Findings
+- **Historical trends**: Revenue, expenses, net income, and EPS over time.
+- **Benchmarking**: Comparing companies across industries.
+- **Outliers**: Detecting companies that deviate significantly from industry norms.
 
-## License
-Include your license information here (e.g., MIT License, Apache License 2.0).
+---
+
+## CI/CD Configurations
+- **GitHub Actions**: CI/CD setup for automating testing and deployment.
+- **Branching Strategy**:
+    - **DEV**: For development and testing.
+    - **pre-LIVE**: For pre-production staging.
+    - **LIVE**: For production-ready deployments.
+
+---
+
+## Analysis Conclusions
+The dashboard will help investors make better decisions by providing:
+1. **Visual insights**: Compare company financials across time.
+2. **Predictive models**: Estimate future financial performance.
+3. **Ease of use**: User-friendly, allowing anyone to navigate and analyze the data.
+
+---
+
+## Source Code
+All code for:
+- **Data ingestion**: Using APIs and Power Query.
+- **Data transformation**: Scripts for cleaning and reformatting.
+- **Visualizations**: Power BI reports and dashboards.
+
+---
+
+## Deployment and Maintenance Instructions
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/ngambip/SEC_EDGAR_Dashboard.git
+    ```
+2. **Set up your environment**:
+    - Install dependencies from `requirements.txt`.
+    - Set up API keys and SQL connections.
+3. **Run the Power BI dashboard** following setup steps in `setup.md`.
+4. **CI/CD**: The CI/CD pipeline is automated via GitHub Actions. Modify `.github/workflows/` for custom deployments.
+
+---
+
+## Glossary
+- **SEC EDGAR**: The U.S. Securities and Exchange Commission’s database for public company filings.
+- **EPS**: Earnings Per Share, a measure of a company’s profitability.
+- **CI/CD**: Continuous Integration and Continuous Deployment, automating code integration and delivery.
+
+---
+
+## Success Criteria
+1. **Accuracy**: The dashboard must provide reliable and up-to-date data.
+2. **User Experience**: The interface should be easy to navigate and use.
+3. **Predictive Models**: Accurate future financial predictions based on historical data.
+4. **CI/CD Pipelines**: Automated deployments for seamless updates and reliability.
 
