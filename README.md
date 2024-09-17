@@ -1,6 +1,6 @@
 # SEC EDGAR Financial Analysis Dashboard
 
-![SEC DASH BOARD](Images/SEC_Logo.png)
+![SEC DASH BOARD](Images/SEC2_Logo.png)
 
 
 
