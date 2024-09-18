@@ -116,17 +116,17 @@ DIVIDE(SUM('Financials'[Net Income]), SUM('Financials'[Revenue]))
 **Mockup Design**: This dashboard will provide interactive and visual insights into financial performance.
 
 ### Dashboard Sections:
-    - Income & Expense Analysis:
-      Visualize key metrics like Revenue, Net Income, Expenses over time.
+- Income & Expense Analysis:
+  Visualize key metrics like Revenue, Net Income, Expenses over time.
         
-    - Growth Analysis:
-       Show quarterly and annual growth rates of revenue, income, and key financial ratios.
+- Growth Analysis:
+  Show quarterly and annual growth rates of revenue, income, and key financial ratios.
         
-    - Competitor Analysis:
-      Comparison of company performance within sectors to identify top performers.
+- Competitor Analysis:
+  Comparison of company performance within sectors to identify top performers.
         
-    - Filing History:
-      A timeline visualization showing punctual and delayed filings for each company.
+- Filing History:
+  A timeline visualization showing punctual and delayed filings for each company.
         
 Performance Predictions:
 Forecast future financial performance based on historical trends using predictive models.
