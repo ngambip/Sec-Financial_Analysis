@@ -1,4 +1,4 @@
-# # Public Company Investment Analysis Project
+# Public Company Investment Analysis Project
 
 ![SEC DASH BOARD](Images/SEC2_Logo.png)
 ---
