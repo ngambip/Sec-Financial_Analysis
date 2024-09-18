@@ -64,66 +64,6 @@ api_url = "https://www.sec.gov/edgar/xbrl"
 response = requests.get(f"{api_url}/cik/{company_id}/financials")
 Certainly! Below is the entire structure formatted in Markdown for your README file:
 
-markdown
-
-# Public Company Investment Analysis Project
-
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Objective](#objective)
-3. [Deliverables](#deliverables)
-4. [Process Overview](#process-overview)
-    - 4.1 [Data Extraction](#data-extraction)
-    - 4.2 [Data Cleaning](#data-cleaning)
-    - 4.3 [Data Storage](#data-storage)
-    - 4.4 [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
-    - 4.5 [Analysis & KPIs](#analysis--kpis)
-    - 4.6 [Data Visualization & Dashboard Mockup](#data-visualization--dashboard-mockup)
-5. [Recommendations](#recommendations)
-6. [Issues and Amendments](#issues-and-amendments)
-7. [Future Work](#future-work)
-8. [Contact](#contact)
-
-## Introduction
-We are an independent institution providing stakeholders with insights and analysis of public company financial data. Our goal is to help investors, corporate strategy teams, and other stakeholders make informed decisions regarding investment opportunities in the U.S. public market. This project leverages financial data from SEC EDGAR to generate reports, predictions, and dashboards.
-
-## Objective
-To provide comprehensive analysis and visual representation of financial data from public companies in the U.S. This includes financial performance analysis, forecast modeling, and comparisons across sectors, enabling stakeholders to make data-driven investment decisions.
-
-## Deliverables
-- **Financial Statements** recreated in Excel:
-    - Income Statement
-    - Balance Sheet
-    - Cash Flow Statement
-    - Statement of Changes in Equity
-- **Financial Reports** on:
-    - Past financial performance
-    - Predicted performance
-    - Filing history and punctuality
-    - Sector-based best/worst performance
-- **Dashboards** showcasing key metrics using Power BI, Tableau, or Looker, including:
-    - Income & Expense Analysis
-    - Growth Analysis
-    - Competitor Analysis
-    - Filing History
-    - Performance Predictions
-
-## Process Overview
-
-### 4.1 Data Extraction
-- **Source**: SEC EDGAR via XBRL API.
-- **Tools**: Python for API requests, Power Query for URL-based data ingestion.
-- **Steps**:
-    1. Extract financial statements for quarterly (10-Q) and annual (10-K) filings.
-    2. Utilize company-specific identifiers (CIK) for precise data retrieval.
-    3. Data is stored in CSV format within the `data/raw/` directory.
-
-```python
-# Example Python script to extract data using SEC EDGAR API
-import requests
-api_url = "https://www.sec.gov/edgar/xbrl"
-response = requests.get(f"{api_url}/cik/{company_id}/financials")
-
 4.2 Data Cleaning
 
     Tools: Python (pandas), Power Query.
