@@ -19,7 +19,7 @@
 7. [Contact](#contact)
 
 ## Introduction
-This project is aimed at providing investors and corporate strategy teams with insights into the best public companies in the US for investment. We audit and analyze financial statements to evaluate past performance, forecast future performance, and generate sector comparisons.
+This project is aimed at providing investors and corporate strategy teams with insights into the best public companies in the US for investment. We are to analyze financial statements to evaluate current performance, forecast future performance, and generate sector comparisons.
 
 ## Objective
 To assist investors in identifying the best companies for investment and support corporate strategy teams by analyzing and auditing financial statements for due diligence purposes.
