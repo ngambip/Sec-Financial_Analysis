@@ -63,6 +63,7 @@ import requests
 api_url = "https://www.sec.gov/edgar/xbrl"
 response = requests.get(f"{api_url}/cik/{company_id}/financials")
 Certainly! Below is the entire structure formatted in Markdown for your README file:
+```
 
 4.2 Data Cleaning
 
