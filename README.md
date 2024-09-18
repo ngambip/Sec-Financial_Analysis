@@ -65,19 +65,18 @@ response = requests.get(f"{api_url}/cik/{company_id}/financials")
 ```
 
 4.2 Data Cleaning
-
 Tools: Python (pandas), Power Query.
 Steps:
      - Remove null and duplicate data.
      - Validate and standardize financial metrics.
      - Ensure consistent date formatting (Quarterly and Annual).
-    - Processed data will be stored in the data/processed/ directory.
+     - Processed data will be stored in the data/processed/ directory.
 
 4.3 Data Storage
 Database: PostgreSQL.
  Steps:
-    - create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
-    - Load cleaned data into PostgreSQL to support scalable querying and analysis.
+     - create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
+     - Load cleaned data into PostgreSQL to support scalable querying and analysis.
 
 CREATE TABLE balance_sheet (
     cik VARCHAR(10),
