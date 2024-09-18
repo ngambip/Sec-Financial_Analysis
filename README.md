@@ -65,16 +65,17 @@ response = requests.get(f"{api_url}/cik/{company_id}/financials")
 ```
 
 ### 4.2 Data Cleaning
-**Tools**: Python (pandas), Power Query.
-**Steps**:
+- **Tools**: Python (pandas), Power Query.
+  
+- **Steps**:
      1. Remove null and duplicate data.
      2. Validate and standardize financial metrics.
      3. Ensure consistent date formatting (Quarterly and Annual).
      4. Processed data will be stored in the data/processed/ directory.
 
 ### 4.3 Data Storage
-**Database**: PostgreSQL.
- **Steps**:
+- **Database**: PostgreSQL.
+- **Steps**:
       1. create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
       2.  Load cleaned data into PostgreSQL to support scalable querying and analysis.
 
@@ -86,15 +87,15 @@ CREATE TABLE balance_sheet (
 );
 
 ### 4.4 Exploratory Data Analysis (EDA)
-**Tools**: Python (pandas, seaborn), SQL queries via PostgreSQL.
-**Steps**:
+- **Tools**: Python (pandas, seaborn), SQL queries via PostgreSQL.
+- **Steps**:
     1. Conduct historical financial analysis (revenue growth, net income trends).
     2. Analyze sector performance, highlighting top-performing and underperforming companies.
     3. Visualize financial metrics using graphs and charts for key insights.
 
 ### 4.5 Analysis & KPIs
-**Tool**s: Power BI, DAX for KPI calculation.
-**KPIs**:
+- **Tool**s: Power BI, DAX for KPI calculation.
+- **KPIs**:
     1. Revenue Growth: Measure year-over-year revenue changes.
     2. Net Profit Margin: Calculate the ratio of net income to total revenue.
     3. Filing Punctuality: Track company filing history and punctuality.
@@ -112,8 +113,8 @@ Net Profit Margin =
 DIVIDE(SUM('Financials'[Net Income]), SUM('Financials'[Revenue]))
 
 ### 4.6 Data Visualization & Dashboard Mockup
-**Tools**: Power BI, Tableau, or Looker.
-**Mockup Design**: This dashboard will provide interactive and visual insights into financial performance.
+- **Tools**: Power BI, Tableau, or Looker.
+- **Mockup Design**: This dashboard will provide interactive and visual insights into financial performance.
 
 ### Dashboard Sections:
 - Income & Expense Analysis:
