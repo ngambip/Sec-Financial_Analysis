@@ -1,4 +1,4 @@
-# Public Company Investment Analysis Project
+# FINANCIAL HEALTH ANALYSIS
 
 ![SEC DASH BOARD](Images/SEC2_Logo.png)
 ---
