@@ -1,154 +1,145 @@
-# SEC EDGAR Financial Analysis Dashboard
+# # Public Company Investment Analysis Project
 
 ![SEC DASH BOARD](Images/SEC2_Logo.png)
-
-
-## Overview
-This project aims to create a dashboard that will help investors and financial analysts make informed investment decisions based on the quarterly reports of companies listed on the SEC EDGAR database. The dashboard will allow users to visualize, compare, and predict company performance, helping them identify which companies might be profitable to invest in.
-
 ---
 
 ## Table of Contents
-1. [Overview](#overview)
+1. [Introduction](#introduction)
 2. [Objective](#objective)
-3. [Collaborative Workflow: Roles and Pipelines](#collaborative-workflow-roles-and-pipelines)
-    - [Data Engineers](#data-engineers)
-    - [Data Analysts](#data-analysts)
-    - [Data Scientists](#data-scientists)
-4. [Data Structure & Flow](#data-structure--flow)
-5. [Data Sources](#data-sources)
-6. [Dashboard Blueprint](#dashboard-blueprint)
-7. [System Architecture](#system-architecture)
-8. [Project Directory Structure](#project-directory-structure)
-9. [Transformation Logic](#transformation-logic)
-10. [Data Quality Checks](#data-quality-checks)
-11. [Exploratory Data Analysis (EDA) Findings](#exploratory-data-analysis-eda-findings)
-12. [CI/CD Configurations](#cicd-configurations)
-13. [Analysis Conclusions](#analysis-conclusions)
-14. [Source Code](#source-code)
-15. [Deployment and Maintenance Instructions](#deployment-and-maintenance-instructions)
-16. [Glossary](#glossary)
-17. [Success Criteria](#success-criteria)
+3. [Deliverables](#deliverables)
+4. [Process Overview](#process-overview)
+    - 4.1 [Data Extraction](#data-extraction)
+    - 4.2 [Data Cleaning](#data-cleaning)
+    - 4.3 [Data Storage](#data-storage)
+    - 4.4 [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+    - 4.5 [Analysis & KPIs](#analysis--kpis)
+    - 4.6 [Data Visualization](#data-visualization)
+5. [Recommendations](#recommendations)
+6. [Issues and Updates](#issues-and-updates)
+7. [Contact](#contact)
 
----
+## Introduction
+This project is aimed at providing investors and corporate strategy teams with insights into the best public companies in the US for investment. We audit and analyze financial statements to evaluate past performance, forecast future performance, and generate sector comparisons.
 
 ## Objective
-To provide an easy-to-use dashboard that helps users analyze financial data, identify trends, and predict company performance, using data from the SEC EDGAR platform.
+To assist investors in identifying the best companies for investment and support corporate strategy teams by analyzing and auditing financial statements for due diligence purposes.
 
-## Collaborative Workflow: Roles and Pipelines
+## Deliverables
+- **Financial Statements Recreated in Excel**
+    - Income Statement
+    - Balance Sheet
+    - Cash Flow Statement
+    - Statement of Changes in Equity
+- **Reports** containing:
+    - Historical and predicted financial performance
+    - Filing history and punctuality
+    - Best/worst-performing companies per sector
+- **Dashboards** showcasing key financial metrics via Power BI, Tableau, or Looker.
 
-### 1. **Data Engineers**
-**Role**: Manage the ingestion, transformation, and storage of SEC EDGAR data.
-- Data Engineers will use APIs to pull data from SEC EDGAR and transform it using SQL and Python before storing it in databases. They will ensure data is clean and validated for further use by other teams.
+## Process Overview
 
-### 2. **Data Analysts**
-**Role**: Perform Exploratory Data Analysis (EDA) and create visualizations.
-- Analysts will access data through URLs into Power Query to clean and structure the data. They will perform analysis and create visualizations using Power BI, helping users compare companies across industries.
+### 4.1 Data Extraction
+- **Source**: SEC EDGAR via the XBRL API.
+- **Tools**: Python for API requests, Power Query for URL downloads.
+- **Process**:
+    1. Extract financial data (Income Statement, Balance Sheet, Cash Flow) for quarterly (10-Q) and annual (10-K) filings.
+    2. Company-specific identifiers such as CIK will be used for targeted data extraction.
+    3. Data is initially stored in CSV format before further processing.
 
-### 3. **Data Scientists**
-**Role**: Develop predictive models to forecast company performance.
-- Data Scientists will access the data through APIs, run advanced machine learning models, and deploy predictions that can be integrated into the dashboard, offering insights into future trends.
+### 4.2 Data Cleaning
+- **Tools**: Python (pandas), Power Query.
+- **Steps**:
+    1. Remove any null or missing values.
+    2. Format dates and ensure consistent time periods.
+    3. Validate financial metrics across different periods for consistency.
+    4. Store cleaned data in the `processed/` directory.
+    
+    ```python
+    # Example: Data Cleaning using Python
+    df.dropna(subset=['revenue', 'net_income'], inplace=True)
+    df['date'] = pd.to_datetime(df['date'])
+    ```
+    
+### 4.3 Data Storage
+- **Database**: PostgreSQL
+- **Process**:
+    1. Create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
+    2. Store cleaned data into PostgreSQL for efficient querying and scalability.
+    
+    ```sql
+    CREATE TABLE income_statement (
+        cik VARCHAR(10),
+        period DATE,
+        revenue NUMERIC,
+        net_income NUMERIC
+    );
+    ```
 
----
+### 4.4 Exploratory Data Analysis (EDA)
+- **Tools**: Python (matplotlib, seaborn), SQL queries from PostgreSQL.
+- **Process**:
+    1. Analyze past financial performance by reviewing revenue growth, profitability, and cash flow.
+    2. Generate sector-wise analysis for top and bottom performers.
+    3. Visualize trends such as revenue growth, net income, and balance sheet ratios.
+    
+    ```python
+    # Example: EDA for revenue growth
+    sns.lineplot(data=df, x='date', y='revenue', hue='company_sector')
+    ```
 
-## Data Structure & Flow
-1. **Raw Data Layer**: SEC EDGAR data collected via APIs.
-2. **Clean Data Layer**: Transformed data ready for analysis.
-3. **Analytical Layer**: Data used for visualization and reporting by analysts.
-4. **Predictive Layer**: Data used by data scientists to generate models for forecasting.
+### 4.5 Analysis & KPIs
+- **Tools**: Power BI, DAX for KPI calculation.
+- **Key Metrics**:
+    - Revenue Growth
+    - Earnings Before Interest & Taxes (EBIT)
+    - Net Profit Margin
+    - Filing punctuality rates
+    - Best/Worst performers per sector
+    
+    **DAX Calculations in Power BI**:
+    
+    - **Revenue Growth**:
+    ```DAX
+    Revenue Growth = (SUM('Financials'[Revenue]) - CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year]))) / CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year]))
+    ```
 
----
+    - **Net Profit Margin**:
+    ```DAX
+    Net Profit Margin = DIVIDE(SUM('Financials'[Net Income]), SUM('Financials'[Revenue]))
+    ```
 
-## Data Sources
-- **SEC EDGAR Database**: The source for financial reports of public companies.
+    - **Filing Punctuality**:
+    ```DAX
+    Filing Punctuality = DIVIDE(SUM('Filings'[On Time Filings]), COUNTROWS('Filings'))
+    ```
 
----
+### 4.6 Data Visualization
+- **Tools**: Power BI, Tableau, Looker
+- **Visuals**:
+    - **Income & Expense Analysis**: Revenue and expense breakdown for each company.
+    - **Growth Analysis**: Visuals showing revenue, earnings, and profitability over time.
+    - **Competitor Analysis**: Comparisons of key metrics (e.g., revenue, profit) across companies in the same sector.
+    - **Filing History**: Visual representation of on-time vs late filings.
+    - **Predictions**: Forecasting visualizations for revenue, cash flow, and net income.
+    
+    ```DAX
+    Revenue Forecast = FORECAST.ETS('Financials'[Revenue], 'Financials'[Date], 12, 0.95)
+    ```
 
-## Dashboard Blueprint
-The dashboard will include:
-- **Company financial trends**: Revenue, net income, and EPS over time.
-- **Comparison tools**: Compare companies across sectors.
-- **Predictive analytics**: Use machine learning models to forecast performance.
+## Recommendations
+- **Best Investment Opportunities**: Based on analysis, recommend companies with strong financial growth, positive profitability trends, and timely filings.
+- **Sector Insights**: Highlight the sectors with consistent performers and those with volatile financials.
+- **Risk Assessment**: Flag companies with inconsistent filings or negative financial growth for further review.
 
----
+## Issues and Updates
+This section will track ongoing issues and updates as they arise during the project. New issues will be documented here with steps taken for resolution.
 
-## System Architecture
-- **Data ingestion**: APIs for engineers and data scientists, URLs for analysts via Power Query.
-- **Storage**: SQL databases to store clean data.
-- **Processing**: Data processed using Python and SQL.
-- **Visualization**: Power BI for real-time dashboard visualizations.
+- **Issue 1**: API rate limits on SEC EDGAR—resolved by implementing batch requests.
+- **Issue 2**: Power BI DAX calculation errors—pending review.
 
----
+## Contact
+For any questions or collaboration opportunities, please contact:
 
-## Project Directory Structure
-|-- data/ |-- raw/ |-- processed/ |-- scripts/ |-- ingestion/ |-- transformation/ |-- models/ |-- reports/ |-- EDA/ |-- visualizations/ |-- README.md
-
-
----
-
-## Transformation Logic
-The Extract, Transform, Load (ETL) process includes:
-- **Extraction**: Collecting data from SEC EDGAR via API and Power Query.
-- **Transformation**: Cleaning and reformatting data for consistency and reliability.
-- **Loading**: Storing clean data in SQL databases.
-
----
-
-## Data Quality Checks
-1. Verify the correct number of rows and columns.
-2. Ensure data types are consistent.
-3. Remove duplicates and handle missing values.
-4. Identify and manage outliers.
-
----
-
-## Exploratory Data Analysis (EDA) Findings
-- **Historical trends**: Revenue, expenses, net income, and EPS over time.
-- **Benchmarking**: Comparing companies across industries.
-- **Outliers**: Detecting companies that deviate significantly from industry norms.
-
----
-
-## CI/CD Configurations
-- **GitHub Actions**: CI/CD setup for automating testing and deployment.
-- **Branching Strategy**:
-    - **DEV**: For development and testing.
-    - **pre-LIVE**: For pre-production staging.
-    - **LIVE**: For production-ready deployments.
-
----
-
-## Analysis Conclusions
-The dashboard will help investors make better decisions by providing:
-1. **Visual insights**: Compare company financials across time.
-2. **Predictive models**: Estimate future financial performance.
-3. **Ease of use**: User-friendly, allowing anyone to navigate and analyze the data.
-
----
-
-## Source Code
-All code for:
-- **Data ingestion**: Using APIs and Power Query.
-- **Data transformation**: Scripts for cleaning and reformatting.
-- **Visualizations**: Power BI reports and dashboards.
-
----
-
-## Deployment and Maintenance Instructions
-To add
-
----
-
-## Glossary
-- **SEC EDGAR**: The U.S. Securities and Exchange Commission’s database for public company filings.
-- **EPS**: Earnings Per Share, a measure of a company’s profitability.
-- **CI/CD**: Continuous Integration and Continuous Deployment, automating code integration and delivery.
-
----
-
-## Success Criteria
-1. **Accuracy**: The dashboard must provide reliable and up-to-date data.
-2. **User Experience**: The interface should be easy to navigate and use.
-3. **Predictive Models**: Accurate future financial predictions based on historical data.
-4. **CI/CD Pipelines**: Automated deployments for seamless updates and reliability.
-
+- **Project Lead**: [Your Name]
+- **Email**: [Your Email]
+- **Phone**: [Your Contact Number]
