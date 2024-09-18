@@ -75,6 +75,7 @@ response = requests.get(f"{api_url}/cik/{company_id}/financials")
 
 ### 4.3 Data Storage
 - **Database**: PostgreSQL.
+  
 - **Steps**:
       1. create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
       2.  Load cleaned data into PostgreSQL to support scalable querying and analysis.
@@ -88,6 +89,7 @@ CREATE TABLE balance_sheet (
 
 ### 4.4 Exploratory Data Analysis (EDA)
 - **Tools**: Python (pandas, seaborn), SQL queries via PostgreSQL.
+  
 - **Steps**:
     1. Conduct historical financial analysis (revenue growth, net income trends).
     2. Analyze sector performance, highlighting top-performing and underperforming companies.
@@ -95,6 +97,7 @@ CREATE TABLE balance_sheet (
 
 ### 4.5 Analysis & KPIs
 - **Tool**s: Power BI, DAX for KPI calculation.
+  
 - **KPIs**:
     1. Revenue Growth: Measure year-over-year revenue changes.
     2. Net Profit Margin: Calculate the ratio of net income to total revenue.
@@ -112,6 +115,7 @@ DIVIDE(SUM('Financials'[Net Income]), SUM('Financials'[Revenue]))
 
 ### 4.6 Data Visualization & Dashboard Mockup
 - **Tools**: Power BI, Tableau, or Looker.
+  
 - **Mockup Design**: This dashboard will provide interactive and visual insights into financial performance.
 
 ### Dashboard Sections:
