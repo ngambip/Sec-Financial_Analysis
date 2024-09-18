@@ -107,8 +107,6 @@ DIVIDE(
   SUM('Financials'[Revenue]) - CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year])),
   CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year]))
 )
-
-
 Net Profit Margin = 
 DIVIDE(SUM('Financials'[Net Income]), SUM('Financials'[Revenue]))
 
