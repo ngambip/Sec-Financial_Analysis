@@ -1,6 +1,6 @@
 # FINANCIAL HEALTH ANALYSIS
 
-![SEC DASH BOARD](Images/SEC2_Logo.png)
+![SEC DASH BOARD](Images/SEC3_Logo.png)
 ---
 
 ## Table of Contents
