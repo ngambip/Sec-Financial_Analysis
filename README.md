@@ -49,9 +49,9 @@ To provide comprehensive analysis and visual representation of financial data fr
 ## Process Overview
 
 ### 4.1 Data Extraction
-- **Source**: SEC EDGAR via XBRL API.
+- **Source**: SEC EDGAR via API.
 - **Tools**: Python for API requests, Power Query for URL-based data ingestion.
-- 
+ 
 - **Steps**:
     1. Extract financial statements for quarterly (10-Q) and annual (10-K) filings.
     2. Utilize company-specific identifiers (CIK) for precise data retrieval.
@@ -114,36 +114,34 @@ DIVIDE(
   CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year]))
 )
 
+
 Net Profit Margin = 
 DIVIDE(SUM('Financials'[Net Income]), SUM('Financials'[Revenue]))
+
+
 
 4.6 Data Visualization & Dashboard Mockup
 
     Tools: Power BI, Tableau, or Looker.
+    
     Mockup Design: This dashboard will provide interactive and visual insights into financial performance.
 
-Dashboard Sections:
+    Dashboard Sections:
 
     Income & Expense Analysis:
-        Visualize key metrics like Revenue, Net Income, Expenses over time.
+    Visualize key metrics like Revenue, Net Income, Expenses over time.
+        
     Growth Analysis:
-        Show quarterly and annual growth rates of revenue, income, and key financial ratios.
+    Show quarterly and annual growth rates of revenue, income, and key financial ratios.
+        
     Competitor Analysis:
-        Comparison of company performance within sectors to identify top performers.
+    Comparison of company performance within sectors to identify top performers.
+        
     Filing History:
-        A timeline visualization showing punctual and delayed filings for each company.
+    A timeline visualization showing punctual and delayed filings for each company.
+        
     Performance Predictions:
-        Forecast future financial performance based on historical trends using predictive models.
-
-Mockup Example:
-+-------------------------------------------+
-| Revenue Growth         | Net Profit Margin |
-|-------------------------------------------|
-| Filing Punctuality     | Expense Breakdown |
-|-------------------------------------------|
-| Sector Performance     | Future Forecast   |
-+-------------------------------------------+
-To be amended as visualizations are developed.
+    Forecast future financial performance based on historical trends using predictive models.
 
 
 # Recommendations
@@ -152,6 +150,7 @@ To be amended as visualizations are developed.
     Sector Insights: Analyze which sectors are outperforming and high
     light high-potential companies within each sector.
     Risk Indicators: Highlight companies with irregular filing patterns or deteriorating financials.
+    
     To be expanded as analysis progresses.
 
 
