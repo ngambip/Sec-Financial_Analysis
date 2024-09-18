@@ -74,12 +74,10 @@ Steps:
     - Processed data will be stored in the data/processed/ directory.
 
 4.3 Data Storage
-
 Database: PostgreSQL.
  Steps:
-
-- create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
-- Load cleaned data into PostgreSQL to support scalable querying and analysis.
+    - create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
+    - Load cleaned data into PostgreSQL to support scalable querying and analysis.
 
 CREATE TABLE balance_sheet (
     cik VARCHAR(10),
@@ -101,9 +99,9 @@ Steps:
 Tools: Power BI, DAX for KPI calculation.
 
 KPIs:
-- Revenue Growth: Measure year-over-year revenue changes.
-- Net Profit Margin: Calculate the ratio of net income to total revenue.
-- Filing Punctuality: Track company filing history and punctuality.
+    - Revenue Growth: Measure year-over-year revenue changes.
+    - Net Profit Margin: Calculate the ratio of net income to total revenue.
+    - Filing Punctuality: Track company filing history and punctuality.
 
 DAX Calculations in Power BI:
 
@@ -127,17 +125,17 @@ Mockup Design: This dashboard will provide interactive and visual insights into 
 
 Dashboard Sections:
 
-- Income & Expense Analysis:
-  Visualize key metrics like Revenue, Net Income, Expenses over time.
+    - Income & Expense Analysis:
+      Visualize key metrics like Revenue, Net Income, Expenses over time.
         
-- Growth Analysis:
-   Show quarterly and annual growth rates of revenue, income, and key financial ratios.
+    - Growth Analysis:
+       Show quarterly and annual growth rates of revenue, income, and key financial ratios.
         
-- Competitor Analysis:
-  Comparison of company performance within sectors to identify top performers.
+    - Competitor Analysis:
+      Comparison of company performance within sectors to identify top performers.
         
-- Filing History:
-  A timeline visualization showing punctual and delayed filings for each company.
+    - Filing History:
+      A timeline visualization showing punctual and delayed filings for each company.
         
 Performance Predictions:
 Forecast future financial performance based on historical trends using predictive models.
