@@ -150,7 +150,7 @@ Sector Insights: Analyze which sectors are outperforming and high
 light high-potential companies within each sector.
 Risk Indicators: Highlight companies with irregular filing patterns or deteriorating financials.
     
-    To be expanded as analysis progresses.
+To be expanded as analysis progresses.
 
 
 # Issues and Amendments
