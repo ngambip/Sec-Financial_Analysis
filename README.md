@@ -38,7 +38,7 @@ To provide comprehensive analysis and visual representation of financial data fr
     - Predicted performance
     - Filing history and punctuality
     - Sector-based best/worst performance
-    - 
+     
 - **Dashboards** showcasing key metrics using Power BI, Tableau, or Looker, including:
     - Income & Expense Analysis
     - Growth Analysis
@@ -55,14 +55,13 @@ To provide comprehensive analysis and visual representation of financial data fr
 - **Steps**:
     1. Extract financial statements for quarterly (10-Q) and annual (10-K) filings.
     2. Utilize company-specific identifiers (CIK) for precise data retrieval.
-    3. Data is stored in CSV format within the `data/raw/` directory.
-
+    3. Data is stored in CSV format
+       
 ```python
 # Example Python script to extract data using SEC EDGAR API
 import requests
 api_url = "https://www.sec.gov/edgar/xbrl"
 response = requests.get(f"{api_url}/cik/{company_id}/financials")
-Certainly! Below is the entire structure formatted in Markdown for your README file:
 ```
 
 4.2 Data Cleaning
