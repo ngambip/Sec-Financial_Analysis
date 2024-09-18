@@ -13,133 +13,207 @@
     - 4.3 [Data Storage](#data-storage)
     - 4.4 [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
     - 4.5 [Analysis & KPIs](#analysis--kpis)
-    - 4.6 [Data Visualization](#data-visualization)
+    - 4.6 [Data Visualization & Dashboard Mockup](#data-visualization--dashboard-mockup)
 5. [Recommendations](#recommendations)
-6. [Issues and Updates](#issues-and-updates)
-7. [Contact](#contact)
+6. [Issues and Amendments](#issues-and-amendments)
+7. [Future Work](#future-work)
+8. [Contact](#contact)
 
 ## Introduction
-This project is aimed at providing investors and corporate strategy teams with insights into the best public companies in the US for investment. We are to analyze financial statements to evaluate current performance, forecast future performance, and generate sector comparisons.
+We are an independent institution providing stakeholders with insights and analysis of public company financial data. Our goal is to help investors, corporate strategy teams, and other stakeholders make informed decisions regarding investment opportunities in the U.S. public market. This project leverages financial data from SEC EDGAR to generate reports, predictions, and dashboards.
 
 ## Objective
-To assist investors in identifying the best companies for investment and support corporate strategy teams by analyzing and auditing financial statements for due diligence purposes.
+To provide comprehensive analysis and visual representation of financial data from public companies in the U.S. This includes financial performance analysis, forecast modeling, and comparisons across sectors, enabling stakeholders to make data-driven investment decisions.
 
 ## Deliverables
-- **Financial Statements Recreated in Excel**
+
+- **Financial Statements** recreated in Excel:
     - Income Statement
     - Balance Sheet
     - Cash Flow Statement
     - Statement of Changes in Equity
-- **Reports** containing:
-    - Historical and predicted financial performance
+    - 
+- **Financial Reports** on:
+    - Past financial performance
+    - Predicted performance
     - Filing history and punctuality
-    - Best/worst-performing companies per sector
-- **Dashboards** showcasing key financial metrics via Power BI, Tableau, or Looker.
+    - Sector-based best/worst performance
+    - 
+- **Dashboards** showcasing key metrics using Power BI, Tableau, or Looker, including:
+    - Income & Expense Analysis
+    - Growth Analysis
+    - Competitor Analysis
+    - Filing History
+    - Performance Predictions
 
 ## Process Overview
 
 ### 4.1 Data Extraction
-- **Source**: SEC EDGAR via the XBRL API.
-- **Tools**: Python for API requests, Power Query for URL downloads.
-- **Process**:
-    1. Extract financial data (Income Statement, Balance Sheet, Cash Flow) for quarterly (10-Q) and annual (10-K) filings.
-    2. Company-specific identifiers such as CIK will be used for targeted data extraction.
-    3. Data is initially stored in CSV format before further processing.
-
-### 4.2 Data Cleaning
-- **Tools**: Python (pandas), Power Query.
+- **Source**: SEC EDGAR via XBRL API.
+- **Tools**: Python for API requests, Power Query for URL-based data ingestion.
+- 
 - **Steps**:
-    1. Remove any null or missing values.
-    2. Format dates and ensure consistent time periods.
-    3. Validate financial metrics across different periods for consistency.
-    4. Store cleaned data in the `processed/` directory.
-    
-    ```python
-    # Example: Data Cleaning using Python
-    df.dropna(subset=['revenue', 'net_income'], inplace=True)
-    df['date'] = pd.to_datetime(df['date'])
-    ```
-    
-### 4.3 Data Storage
-- **Database**: PostgreSQL
-- **Process**:
-    1. Create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
-    2. Store cleaned data into PostgreSQL for efficient querying and scalability.
-    
-    ```sql
-    CREATE TABLE income_statement (
-        cik VARCHAR(10),
-        period DATE,
-        revenue NUMERIC,
-        net_income NUMERIC
-    );
-    ```
+    1. Extract financial statements for quarterly (10-Q) and annual (10-K) filings.
+    2. Utilize company-specific identifiers (CIK) for precise data retrieval.
+    3. Data is stored in CSV format within the `data/raw/` directory.
 
-### 4.4 Exploratory Data Analysis (EDA)
-- **Tools**: Python (matplotlib, seaborn), SQL queries from PostgreSQL.
-- **Process**:
-    1. Analyze past financial performance by reviewing revenue growth, profitability, and cash flow.
-    2. Generate sector-wise analysis for top and bottom performers.
-    3. Visualize trends such as revenue growth, net income, and balance sheet ratios.
-    
-    ```python
-    # Example: EDA for revenue growth
-    sns.lineplot(data=df, x='date', y='revenue', hue='company_sector')
-    ```
+```python
+# Example Python script to extract data using SEC EDGAR API
+import requests
+api_url = "https://www.sec.gov/edgar/xbrl"
+response = requests.get(f"{api_url}/cik/{company_id}/financials")
+Certainly! Below is the entire structure formatted in Markdown for your README file:
 
-### 4.5 Analysis & KPIs
-- **Tools**: Power BI, DAX for KPI calculation.
-- **Key Metrics**:
-    - Revenue Growth
-    - Earnings Before Interest & Taxes (EBIT)
-    - Net Profit Margin
-    - Filing punctuality rates
-    - Best/Worst performers per sector
-    
-    **DAX Calculations in Power BI**:
-    
-    - **Revenue Growth**:
-    ```DAX
-    Revenue Growth = (SUM('Financials'[Revenue]) - CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year]))) / CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year]))
-    ```
+markdown
 
-    - **Net Profit Margin**:
-    ```DAX
-    Net Profit Margin = DIVIDE(SUM('Financials'[Net Income]), SUM('Financials'[Revenue]))
-    ```
+# Public Company Investment Analysis Project
 
-    - **Filing Punctuality**:
-    ```DAX
-    Filing Punctuality = DIVIDE(SUM('Filings'[On Time Filings]), COUNTROWS('Filings'))
-    ```
+## Table of Contents
+1. [Introduction](#introduction)
+2. [Objective](#objective)
+3. [Deliverables](#deliverables)
+4. [Process Overview](#process-overview)
+    - 4.1 [Data Extraction](#data-extraction)
+    - 4.2 [Data Cleaning](#data-cleaning)
+    - 4.3 [Data Storage](#data-storage)
+    - 4.4 [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+    - 4.5 [Analysis & KPIs](#analysis--kpis)
+    - 4.6 [Data Visualization & Dashboard Mockup](#data-visualization--dashboard-mockup)
+5. [Recommendations](#recommendations)
+6. [Issues and Amendments](#issues-and-amendments)
+7. [Future Work](#future-work)
+8. [Contact](#contact)
 
-### 4.6 Data Visualization
-- **Tools**: Power BI, Tableau, Looker
-- **Visuals**:
-    - **Income & Expense Analysis**: Revenue and expense breakdown for each company.
-    - **Growth Analysis**: Visuals showing revenue, earnings, and profitability over time.
-    - **Competitor Analysis**: Comparisons of key metrics (e.g., revenue, profit) across companies in the same sector.
-    - **Filing History**: Visual representation of on-time vs late filings.
-    - **Predictions**: Forecasting visualizations for revenue, cash flow, and net income.
-    
-    ```DAX
-    Revenue Forecast = FORECAST.ETS('Financials'[Revenue], 'Financials'[Date], 12, 0.95)
-    ```
+## Introduction
+We are an independent institution providing stakeholders with insights and analysis of public company financial data. Our goal is to help investors, corporate strategy teams, and other stakeholders make informed decisions regarding investment opportunities in the U.S. public market. This project leverages financial data from SEC EDGAR to generate reports, predictions, and dashboards.
 
-## Recommendations
-- **Best Investment Opportunities**: Based on analysis, recommend companies with strong financial growth, positive profitability trends, and timely filings.
-- **Sector Insights**: Highlight the sectors with consistent performers and those with volatile financials.
-- **Risk Assessment**: Flag companies with inconsistent filings or negative financial growth for further review.
+## Objective
+To provide comprehensive analysis and visual representation of financial data from public companies in the U.S. This includes financial performance analysis, forecast modeling, and comparisons across sectors, enabling stakeholders to make data-driven investment decisions.
 
-## Issues and Updates
-This section will track ongoing issues and updates as they arise during the project. New issues will be documented here with steps taken for resolution.
+## Deliverables
+- **Financial Statements** recreated in Excel:
+    - Income Statement
+    - Balance Sheet
+    - Cash Flow Statement
+    - Statement of Changes in Equity
+- **Financial Reports** on:
+    - Past financial performance
+    - Predicted performance
+    - Filing history and punctuality
+    - Sector-based best/worst performance
+- **Dashboards** showcasing key metrics using Power BI, Tableau, or Looker, including:
+    - Income & Expense Analysis
+    - Growth Analysis
+    - Competitor Analysis
+    - Filing History
+    - Performance Predictions
 
-- **Issue 1**: API rate limits on SEC EDGAR—resolved by implementing batch requests.
-- **Issue 2**: Power BI DAX calculation errors—pending review.
+## Process Overview
 
-## Contact
-For any questions or collaboration opportunities, please contact:
+### 4.1 Data Extraction
+- **Source**: SEC EDGAR via XBRL API.
+- **Tools**: Python for API requests, Power Query for URL-based data ingestion.
+- **Steps**:
+    1. Extract financial statements for quarterly (10-Q) and annual (10-K) filings.
+    2. Utilize company-specific identifiers (CIK) for precise data retrieval.
+    3. Data is stored in CSV format within the `data/raw/` directory.
 
-- **Project Lead**: [Your Name]
-- **Email**: [Your Email]
-- **Phone**: [Your Contact Number]
+```python
+# Example Python script to extract data using SEC EDGAR API
+import requests
+api_url = "https://www.sec.gov/edgar/xbrl"
+response = requests.get(f"{api_url}/cik/{company_id}/financials")
+
+4.2 Data Cleaning
+
+    Tools: Python (pandas), Power Query.
+    Steps:
+        Remove null and duplicate data.
+        Validate and standardize financial metrics.
+        Ensure consistent date formatting (Quarterly and Annual).
+        Processed data will be stored in the data/processed/ directory.
+
+4.3 Data Storage
+
+    Database: PostgreSQL.
+    Steps:
+        Create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
+        Load cleaned data into PostgreSQL to support scalable querying and analysis.
+
+CREATE TABLE balance_sheet (
+    cik VARCHAR(10),
+    period DATE,
+    total_assets NUMERIC,
+    total_liabilities NUMERIC
+);
+
+4.4 Exploratory Data Analysis (EDA)
+
+    Tools: Python (pandas, seaborn), SQL queries via PostgreSQL.
+    Steps:
+        Conduct historical financial analysis (revenue growth, net income trends).
+        Analyze sector performance, highlighting top-performing and underperforming companies.
+        Visualize financial metrics using graphs and charts for key insights.
+
+4.5 Analysis & KPIs
+
+    Tools: Power BI, DAX for KPI calculation.
+
+    KPIs:
+        Revenue Growth: Measure year-over-year revenue changes.
+        Net Profit Margin: Calculate the ratio of net income to total revenue.
+        Filing Punctuality: Track company filing history and punctuality.
+
+    DAX Calculations in Power BI:
+        Revenue Growth:
+
+Revenue Growth = 
+DIVIDE(
+  SUM('Financials'[Revenue]) - CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year])),
+  CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year]))
+)
+
+Net Profit Margin = 
+DIVIDE(SUM('Financials'[Net Income]), SUM('Financials'[Revenue]))
+
+4.6 Data Visualization & Dashboard Mockup
+
+    Tools: Power BI, Tableau, or Looker.
+    Mockup Design: This dashboard will provide interactive and visual insights into financial performance.
+
+Dashboard Sections:
+
+    Income & Expense Analysis:
+        Visualize key metrics like Revenue, Net Income, Expenses over time.
+    Growth Analysis:
+        Show quarterly and annual growth rates of revenue, income, and key financial ratios.
+    Competitor Analysis:
+        Comparison of company performance within sectors to identify top performers.
+    Filing History:
+        A timeline visualization showing punctual and delayed filings for each company.
+    Performance Predictions:
+        Forecast future financial performance based on historical trends using predictive models.
+
+Mockup Example:
++-------------------------------------------+
+| Revenue Growth         | Net Profit Margin |
+|-------------------------------------------|
+| Filing Punctuality     | Expense Breakdown |
+|-------------------------------------------|
+| Sector Performance     | Future Forecast   |
++-------------------------------------------+
+To be amended as visualizations are developed.
+
+
+# Recommendations
+
+    Best Performing Companies: Identify companies with consistent revenue growth and strong profitability metrics.
+    Sector Insights: Analyze which sectors are outperforming and high
+    light high-potential companies within each sector.
+    Risk Indicators: Highlight companies with irregular filing patterns or deteriorating financials.
+    To be expanded as analysis progresses.
+
+
+# Issues and Amendments
+To be expanded as analysis progresses.
+
