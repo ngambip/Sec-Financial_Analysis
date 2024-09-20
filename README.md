@@ -21,7 +21,17 @@
 8. [Contact](#contact)
 
 ## Introduction
-We are an independent institution providing stakeholders with insights and analysis of public company financial data. Our goal is to help investors, corporate strategy teams, and other stakeholders make informed decisions regarding investment opportunities in the U.S. public market. This project leverages financial data from SEC EDGAR to generate reports, predictions, and dashboards.
+
+
+We are a data team that specialises in delivering financial insights using data from US public companies. 
+
+We do this by:
+* analysing financial data 
+* providing financial advise based on expert reports 
+* educating our clients using data-driven insights 
+
+This project leverages financial data from SEC EDGAR to generate reports, predictions, and dashboards.
+
 
 ## Objective
 To provide comprehensive analysis and visual representation of financial data from public companies in the U.S. This includes financial performance analysis, forecast modeling, and comparisons across sectors, enabling stakeholders to make data-driven investment decisions.
@@ -50,13 +60,13 @@ To provide comprehensive analysis and visual representation of financial data fr
 ## Process Overview
 
 ### 4.1 Data Extraction
-- **Source**: SEC EDGAR via API.
+- **Source**: SEC EDGAR
 - **Tools**: Python for API requests, Power Query for URL-based data ingestion.
  
 - **Steps**:
     1. Extract financial statements for quarterly (10-Q) and annual (10-K) filings.
     2. Utilize company-specific identifiers (CIK) for precise data retrieval.
-    3. Data is stored in CSV format
+    3. Data is stored in CSV and JSON format
        
 ```python
 # Example Python script to extract data using SEC EDGAR API
@@ -106,13 +116,22 @@ response = requests.get(f"{api_url}/cik/{company_id}/financials")
 
 DAX Calculations in Power BI:
 
+
+```sql
 Revenue Growth = 
 DIVIDE(
   SUM('Financials'[Revenue]) - CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year])),
   CALCULATE(SUM('Financials'[Revenue]), PREVIOUSYEAR('Financials'[Year]))
 )
+```
+
+```sql
 Net Profit Margin = 
 DIVIDE(SUM('Financials'[Net Income]), SUM('Financials'[Revenue]))
+
+```
+
+
 
 ### 4.6 Data Visualization & Dashboard Mockup
 - **Tools**: Power BI, Tableau, or Looker.
