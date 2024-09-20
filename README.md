@@ -10,9 +10,10 @@
 3. [Deliverables](#deliverables)
 4. [Process Overview](#process-overview)
     - 4.1 [Data Extraction](#data-extraction)
-    - 4.2 [Data Cleaning](#data-cleaning)
-    - 4.3 [Data Storage](#data-storage)
-    - 4.4 [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
+    - 4.2 [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)- 
+    - 4.3 [Data Cleaning](#data-cleaning)
+    - 4.4 [Data Storage](#data-storage)
+ 
     - 4.5 [Analysis & KPIs](#analysis--kpis)
     - 4.6 [Data Visualization & Dashboard Mockup](#data-visualization--dashboard-mockup)
 5. [Recommendations](#recommendations)
