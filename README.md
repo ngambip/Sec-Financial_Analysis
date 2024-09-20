@@ -17,14 +17,13 @@
     - 4.6 [Data Visualization & Dashboard Mockup](#data-visualization--dashboard-mockup)
 5. [Recommendations](#recommendations)
 6. [Issues and Amendments](#issues-and-amendments)
-7. [Future Work](#future-work)
-8. [Contact](#contact)
+
 
 ## Introduction
 Our project objective is to analyze and visualize financial data from U.S. public companies, providing clear insights and forecasts to help stakeholders make informed investment decisions.
 
 ## Objective
-Our services include:
+- **Our services include**:
     - Analyzing financial data
     - Offering financial advice based on expert reports
     - Educating clients through data-driven insights
@@ -80,7 +79,7 @@ response = requests.get(f"{api_url}/cik/{company_id}/financials")
 - **Steps**:
   1. Inspect column names and data types
   2. Check summary statistics (mean, median, mode, etc.)
-  3  Analyze frequency distributions for categorical data
+  3.  Analyze frequency distributions for categorical data
   4. Identify missing or null values
   5. Visualize data distributions using histograms, box plots, or density plots
   6. Detect outliers with scatter plots or box plots
