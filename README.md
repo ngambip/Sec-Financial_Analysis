@@ -105,15 +105,17 @@ response = requests.get(f"{api_url}/cik/{company_id}/financials")
 - **Database**: PostgreSQL.
   
 - **Steps**:
-      1. create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
-      2. Load cleaned data into PostgreSQL to support scalable querying and analysis.
+    1. create tables for each financial statement (Income Statement, Balance Sheet, Cash Flow).
+    2. Load cleaned data into PostgreSQL to support scalable querying and analysis.
 
-- **CREATE TABLE balance_sheet (
+ ```sql
+  CREATE TABLE balance_sheet (
     cik VARCHAR(10),
     period DATE,
     total_assets NUMERIC,
     total_liabilities NUMERIC
 )**;
+```
 
 ### 4.5 Analysis & KPIs
 - **Tool**s: Power BI, DAX for KPI calculation.
