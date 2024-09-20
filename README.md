@@ -21,20 +21,20 @@
 8. [Contact](#contact)
 
 ## Introduction
-
-
-We are a data team that specialises in delivering financial insights using data from US public companies. 
-
-We do this by:
-* analysing financial data 
-* providing financial advise based on expert reports 
-* educating our clients using data-driven insights 
-
-This project leverages financial data from SEC EDGAR to generate reports, predictions, and dashboards.
-
+Our project objective is to analyze and visualize financial data from U.S. public companies, providing clear insights and forecasts to help stakeholders make informed investment decisions.
 
 ## Objective
-To provide comprehensive analysis and visual representation of financial data from public companies in the U.S. This includes financial performance analysis, forecast modeling, and comparisons across sectors, enabling stakeholders to make data-driven investment decisions.
+Our services include:
+    - Analyzing financial data
+    - Offering financial advice based on expert reports
+    - Educating clients through data-driven insights
+    - Developing financial models to predict future trends
+    - Benchmarking company performance against industry standards
+    - Creating custom financial dashboards for real-time tracking
+    - Conducting risk assessments to identify potential financial challenges
+    - Offering tailored investment recommendations based on data analysis.
+
+
 
 ## Deliverables
 
@@ -74,9 +74,26 @@ import requests
 api_url = "https://www.sec.gov/edgar/xbrl"
 response = requests.get(f"{api_url}/cik/{company_id}/financials")
 ```
+### 4.2 Exploratory Data Analysis (EDA)
+- **Tools**: Python (pandas, seaborn), SQL queries via PostgreSQL.
+  
+- **Steps**:
+  1. Inspect column names and data types
+  2. Check summary statistics (mean, median, mode, etc.)
+  3  Analyze frequency distributions for categorical data
+  4. Identify missing or null values
+  5. Visualize data distributions using histograms, box plots, or density plots
+  6. Detect outliers with scatter plots or box plots
+  7. Explore variable relationships using scatter plots or correlation matrices
+  8. Evaluate data quality based on initial observations
+  9. Note any potential data type mismatches or unrealistic values
+ 10. Look for duplicate entries in the data
+ 11. Conduct historical financial analysis (revenue growth, net income trends).
+ 12. Analyze sector performance, highlighting top-performing and underperforming companies.
+ 13. Visualize financial metrics using graphs and charts for key insights.
 
-### 4.2 Data Cleaning
-- **Tools**: Python (pandas), Power Query.
+### 4.3 Data Cleaning
+- **Tools**: Python (pandas), Excel (Power Query).
   
 - **Steps**:
      1. Remove null and duplicate data.
@@ -84,7 +101,7 @@ response = requests.get(f"{api_url}/cik/{company_id}/financials")
      3. Ensure consistent date formatting (Quarterly and Annual).
      4. Processed data will be stored in the data/processed/ directory.
 
-### 4.3 Data Storage
+### 4.4 Data Storage
 - **Database**: PostgreSQL.
   
 - **Steps**:
@@ -98,14 +115,6 @@ response = requests.get(f"{api_url}/cik/{company_id}/financials")
     total_liabilities NUMERIC
 )**;
 
-### 4.4 Exploratory Data Analysis (EDA)
-- **Tools**: Python (pandas, seaborn), SQL queries via PostgreSQL.
-  
-- **Steps**:
-    1. Conduct historical financial analysis (revenue growth, net income trends).
-    2. Analyze sector performance, highlighting top-performing and underperforming companies.
-    3. Visualize financial metrics using graphs and charts for key insights.
-
 ### 4.5 Analysis & KPIs
 - **Tool**s: Power BI, DAX for KPI calculation.
   
@@ -115,7 +124,6 @@ response = requests.get(f"{api_url}/cik/{company_id}/financials")
     3. Filing Punctuality: Track company filing history and punctuality.
 
 DAX Calculations in Power BI:
-
 
 ```sql
 Revenue Growth = 
@@ -130,8 +138,6 @@ Net Profit Margin =
 DIVIDE(SUM('Financials'[Net Income]), SUM('Financials'[Revenue]))
 
 ```
-
-
 
 ### 4.6 Data Visualization & Dashboard Mockup
 - **Tools**: Power BI, Tableau, or Looker.
