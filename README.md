@@ -33,8 +33,6 @@ Our project objective is to analyze and visualize financial data from U.S. publi
     - Conducting risk assessments to identify potential financial challenges
     - Offering tailored investment recommendations based on data analysis.
 
-
-
 ## Deliverables
 
 - **Financial Statements** recreated in Excel:
@@ -77,19 +75,19 @@ response = requests.get(f"{api_url}/cik/{company_id}/financials")
 - **Tools**: Python (pandas, seaborn), SQL queries via PostgreSQL.
   
 - **Steps**:
-  1. Inspect column names and data types
-  2. Check summary statistics (mean, median, mode, etc.)
+  1.  Inspect column names and data types
+  2.  Check summary statistics (mean, median, mode, etc.)
   3.  Analyze frequency distributions for categorical data
-  4. Identify missing or null values
-  5. Visualize data distributions using histograms, box plots, or density plots
-  6. Detect outliers with scatter plots or box plots
-  7. Explore variable relationships using scatter plots or correlation matrices
-  8. Evaluate data quality based on initial observations
-  9. Note any potential data type mismatches or unrealistic values
- 10. Look for duplicate entries in the data
- 11. Conduct historical financial analysis (revenue growth, net income trends).
- 12. Analyze sector performance, highlighting top-performing and underperforming companies.
- 13. Visualize financial metrics using graphs and charts for key insights.
+  4.  Identify missing or null values
+  5.  Visualize data distributions using histograms, box plots, or density plots
+  6.  Detect outliers with scatter plots or box plots
+  7.  Explore variable relationships using scatter plots or correlation matrices
+  8.  Evaluate data quality based on initial observations
+  9.  Note any potential data type mismatches or unrealistic values
+ 10.  Look for duplicate entries in the data
+ 11.  Conduct historical financial analysis (revenue growth, net income trends).
+ 12.  Analyze sector performance, highlighting top-performing and underperforming companies.
+ 13.  Visualize financial metrics using graphs and charts for key insights.
 
 ### 4.3 Data Cleaning
 - **Tools**: Python (pandas), Excel (Power Query).
@@ -164,10 +162,10 @@ Forecast future financial performance based on historical trends using predictiv
 
 # Recommendations
 
-Best Performing Companies: Identify companies with consistent revenue growth and strong profitability metrics.
-Sector Insights: Analyze which sectors are outperforming and high
-light high-potential companies within each sector.
-Risk Indicators: Highlight companies with irregular filing patterns or deteriorating financials.
+- Best Performing Companies: Identify companies with consistent revenue growth and strong profitability metrics.
+- Sector Insights: Analyze which sectors are outperforming and high
+- light high-potential companies within each sector.
+- Risk Indicators: Highlight companies with irregular filing patterns or deteriorating financials.
     
 To be expanded as analysis progresses.
 
